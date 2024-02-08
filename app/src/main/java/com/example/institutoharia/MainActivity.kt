@@ -102,11 +102,12 @@ fun MyApp(modifier: Modifier){
            modifier = modifier
                .fillMaxSize()
                .border(BorderStroke(2.dp, Color.Red))) {
-        Contenido()
+        GBasico()
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+
+//PANTALLA DE INICIO
 @Composable
 fun Contenido() {
     var estadoSheets by rememberSaveable { mutableStateOf(false) }
@@ -155,6 +156,244 @@ fun Contenido() {
     }
 }
 
+//PANTALLA GRADO BASICO
+@Composable
+fun GBasico(){
+    var estadoSheets by rememberSaveable { mutableStateOf(false) }
+    var contenidoSheets by rememberSaveable {
+        mutableStateOf("")
+    }
+
+    val listaContenidoBasico1 = listOf(
+        Data(textoCard = "Ciencias Aplicadas I", textoModal = "Hola 1", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico1)),
+        Data(textoCard = "Comunicación y sociedad I", textoModal = "Hola 2", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico2)),
+        Data(textoCard = "Equipos eléctricos y electrónicos", textoModal = "Hola 3", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico3)),
+        Data(textoCard = "Instalación y mantenimiento de redes para transmisión de datos", textoModal = "Hola 4", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico4)),
+    )
+
+    val listaContenidoBasico2 = listOf(
+        Data(textoCard = "Montaje y mantenimiento de sistemas y componentes informáticos", textoModal = "Horas Semanales: 9 horas\n" + "Horas Totales: 288 horas", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico5)),
+        Data(textoCard = "Operaciones auxiliares para la configuración y la explotación", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico6)),
+        Data(textoCard = "Formación en centros de trabajo", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico7)),
+        Data(textoCard = "Comunicación y sociedad II", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico2)),
+        Data(textoCard = "Ciencias aplicadas II", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico1)),
+    )
+
+    Column(modifier = Modifier
+        .padding(top = 80.dp)
+        .padding(10.dp)
+        .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = "PRIMER AÑO", fontWeight = FontWeight.Bold, fontSize = 25.sp)
+        Text(text = "Las asignaturas del 1º año de FP Básica.", fontSize = 17.sp, textAlign = TextAlign.Center)
+        for (index in listaContenidoBasico1.indices step 2) {
+            Row (modifier = Modifier.padding(vertical = 10.dp)) {
+                var maxIndex = index + 1
+                if (maxIndex >= listaContenidoBasico1.size) {
+                    maxIndex -= 1
+                }
+                for (currentIndex in index .. maxIndex) {
+                    val data = listaContenidoBasico1[currentIndex]
+                    ElevatedCard (modifier = Modifier
+                        .clickable {
+                            estadoSheets = true
+                            contenidoSheets = data.textoModal
+                        }
+                        .padding(10.dp)
+                        .weight(1f)) {
+                        Image(painter = data.imagen, contentDescription = data.textoImagen)
+                        Text(text = data.textoCard, fontWeight = FontWeight.Bold, modifier = Modifier.padding(10.dp))
+                    }
+                }
+            }
+        }
+
+        Text(text = "SEGUNDO AÑO", fontWeight = FontWeight.Bold, fontSize = 25.sp, modifier = Modifier.padding(top = 10.dp))
+        Text(text = "Las asignaturas del 2º año de FP Básica.", fontSize = 17.sp, textAlign = TextAlign.Center)
+        for (index in listaContenidoBasico2.indices step 2) {
+            Row (modifier = Modifier.padding(vertical = 10.dp)) {
+                var maxIndex = index + 1
+                if (maxIndex >= listaContenidoBasico2.size) {
+                    maxIndex -= 1
+                }
+                for (currentIndex in index .. maxIndex) {
+                    val data = listaContenidoBasico2[currentIndex]
+                    ElevatedCard (modifier = Modifier
+                        .clickable {
+                            estadoSheets = true
+                            contenidoSheets = data.textoModal
+                        }
+                        .padding(10.dp)
+                        .weight(1f)) {
+                        Image(painter = data.imagen, contentDescription = data.textoImagen)
+                        Text(text = data.textoCard, fontWeight = FontWeight.Bold, modifier = Modifier.padding(10.dp))
+                    }
+                }
+            }
+        }
+        Sheets({ estadoSheets = false; contenidoSheets = "" }, estadoSheets, contenidoSheets)
+    }
+}
+
+//PANTALLA GRADO MEDIO
+@Composable
+fun GMedio(){
+    var estadoSheets by rememberSaveable { mutableStateOf(false) }
+    var contenidoSheets by rememberSaveable {
+        mutableStateOf("")
+    }
+
+    val listaContenidoBasico1 = listOf(
+        Data(textoCard = "Ciencias Aplicadas I", textoModal = "Hola 1", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico1)),
+        Data(textoCard = "Comunicación y sociedad I", textoModal = "Hola 2", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico2)),
+        Data(textoCard = "Equipos eléctricos y electrónicos", textoModal = "Hola 3", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico3)),
+        Data(textoCard = "Instalación y mantenimiento de redes para transmisión de datos", textoModal = "Hola 4", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico4)),
+    )
+
+    val listaContenidoBasico2 = listOf(
+        Data(textoCard = "Montaje y mantenimiento de sistemas y componentes informáticos", textoModal = "Horas Semanales: 9 horas\n" + "Horas Totales: 288 horas", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico5)),
+        Data(textoCard = "Operaciones auxiliares para la configuración y la explotación", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico6)),
+        Data(textoCard = "Formación en centros de trabajo", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico7)),
+        Data(textoCard = "Comunicación y sociedad II", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico2)),
+        Data(textoCard = "Ciencias aplicadas II", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico1)),
+    )
+
+    Column(modifier = Modifier
+        .padding(top = 80.dp)
+        .padding(10.dp)
+        .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = "PRIMER AÑO", fontWeight = FontWeight.Bold, fontSize = 25.sp)
+        Text(text = "Las asignaturas del 1º año de FP Media.", fontSize = 17.sp, textAlign = TextAlign.Center)
+        for (index in listaContenidoBasico1.indices step 2) {
+            Row (modifier = Modifier.padding(vertical = 10.dp)) {
+                var maxIndex = index + 1
+                if (maxIndex >= listaContenidoBasico1.size) {
+                    maxIndex -= 1
+                }
+                for (currentIndex in index .. maxIndex) {
+                    val data = listaContenidoBasico1[currentIndex]
+                    ElevatedCard (modifier = Modifier
+                        .clickable {
+                            estadoSheets = true
+                            contenidoSheets = data.textoModal
+                        }
+                        .padding(10.dp)
+                        .weight(1f)) {
+                        Image(painter = data.imagen, contentDescription = data.textoImagen)
+                        Text(text = data.textoCard, fontWeight = FontWeight.Bold, modifier = Modifier.padding(10.dp))
+                    }
+                }
+            }
+        }
+
+        Text(text = "SEGUNDO AÑO", fontWeight = FontWeight.Bold, fontSize = 25.sp, modifier = Modifier.padding(top = 10.dp))
+        Text(text = "Las asignaturas del 2º año de FP Media.", fontSize = 17.sp, textAlign = TextAlign.Center)
+        for (index in listaContenidoBasico2.indices step 2) {
+            Row (modifier = Modifier.padding(vertical = 10.dp)) {
+                var maxIndex = index + 1
+                if (maxIndex >= listaContenidoBasico2.size) {
+                    maxIndex -= 1
+                }
+                for (currentIndex in index .. maxIndex) {
+                    val data = listaContenidoBasico2[currentIndex]
+                    ElevatedCard (modifier = Modifier
+                        .clickable {
+                            estadoSheets = true
+                            contenidoSheets = data.textoModal
+                        }
+                        .padding(10.dp)
+                        .weight(1f)) {
+                        Image(painter = data.imagen, contentDescription = data.textoImagen)
+                        Text(text = data.textoCard, fontWeight = FontWeight.Bold, modifier = Modifier.padding(10.dp))
+                    }
+                }
+            }
+        }
+        Sheets({ estadoSheets = false; contenidoSheets = "" }, estadoSheets, contenidoSheets)
+    }
+}
+
+//PANTALLA GRADO SUPERIOR
+@Composable
+fun GSuperior(){
+    var estadoSheets by rememberSaveable { mutableStateOf(false) }
+    var contenidoSheets by rememberSaveable {
+        mutableStateOf("")
+    }
+
+    val listaContenidoBasico1 = listOf(
+        Data(textoCard = "Ciencias Aplicadas I", textoModal = "Hola 1", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico1)),
+        Data(textoCard = "Comunicación y sociedad I", textoModal = "Hola 2", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico2)),
+        Data(textoCard = "Equipos eléctricos y electrónicos", textoModal = "Hola 3", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico3)),
+        Data(textoCard = "Instalación y mantenimiento de redes para transmisión de datos", textoModal = "Hola 4", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico4)),
+    )
+
+    val listaContenidoBasico2 = listOf(
+        Data(textoCard = "Montaje y mantenimiento de sistemas y componentes informáticos", textoModal = "Horas Semanales: 9 horas\n" + "Horas Totales: 288 horas", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico5)),
+        Data(textoCard = "Operaciones auxiliares para la configuración y la explotación", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico6)),
+        Data(textoCard = "Formación en centros de trabajo", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico7)),
+        Data(textoCard = "Comunicación y sociedad II", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico2)),
+        Data(textoCard = "Ciencias aplicadas II", textoModal = "Hola 6", textoImagen = "hola", imagen = painterResource(id = R.drawable.basico1)),
+    )
+
+    Column(modifier = Modifier
+        .padding(top = 80.dp)
+        .padding(10.dp)
+        .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = "PRIMER AÑO", fontWeight = FontWeight.Bold, fontSize = 25.sp)
+        Text(text = "Las asignaturas del 1º año de FP Superior.", fontSize = 17.sp, textAlign = TextAlign.Center)
+        for (index in listaContenidoBasico1.indices step 2) {
+            Row (modifier = Modifier.padding(vertical = 10.dp)) {
+                var maxIndex = index + 1
+                if (maxIndex >= listaContenidoBasico1.size) {
+                    maxIndex -= 1
+                }
+                for (currentIndex in index .. maxIndex) {
+                    val data = listaContenidoBasico1[currentIndex]
+                    ElevatedCard (modifier = Modifier
+                        .clickable {
+                            estadoSheets = true
+                            contenidoSheets = data.textoModal
+                        }
+                        .padding(10.dp)
+                        .weight(1f)) {
+                        Image(painter = data.imagen, contentDescription = data.textoImagen)
+                        Text(text = data.textoCard, fontWeight = FontWeight.Bold, modifier = Modifier.padding(10.dp))
+                    }
+                }
+            }
+        }
+
+        Text(text = "SEGUNDO AÑO", fontWeight = FontWeight.Bold, fontSize = 25.sp, modifier = Modifier.padding(top = 10.dp))
+        Text(text = "Las asignaturas del 2º año de FP Superior.", fontSize = 17.sp, textAlign = TextAlign.Center)
+        for (index in listaContenidoBasico2.indices step 2) {
+            Row (modifier = Modifier.padding(vertical = 10.dp)) {
+                var maxIndex = index + 1
+                if (maxIndex >= listaContenidoBasico2.size) {
+                    maxIndex -= 1
+                }
+                for (currentIndex in index .. maxIndex) {
+                    val data = listaContenidoBasico2[currentIndex]
+                    ElevatedCard (modifier = Modifier
+                        .clickable {
+                            estadoSheets = true
+                            contenidoSheets = data.textoModal
+                        }
+                        .padding(10.dp)
+                        .weight(1f)) {
+                        Image(painter = data.imagen, contentDescription = data.textoImagen)
+                        Text(text = data.textoCard, fontWeight = FontWeight.Bold, modifier = Modifier.padding(10.dp))
+                    }
+                }
+            }
+        }
+        Sheets({ estadoSheets = false; contenidoSheets = "" }, estadoSheets, contenidoSheets)
+    }
+}
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Sheets(onDismissModalBottomSheet: () -> Unit, estadoSheets: Boolean, contenidoSheets: String) {
@@ -164,7 +403,7 @@ fun Sheets(onDismissModalBottomSheet: () -> Unit, estadoSheets: Boolean, conteni
             onDismissRequest = { onDismissModalBottomSheet() },
             sheetState = sheetState
         ) {
-            Row(modifier = Modifier.padding(60.dp)) {
+            Row(modifier = Modifier.padding(60.dp), Arrangement.Center) {
                 Text(text = contenidoSheets)
             }
         }
